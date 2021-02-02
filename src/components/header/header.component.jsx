@@ -14,21 +14,21 @@ const Header=({currentUser})=>(
             <Link className='option' to='/shop'>SHOP</Link>
             <Link className='option' to='/contact'>CONTACT</Link>
             {
-                 (currentUser)?
+                 currentUser?(
                  <div className='option' onClick={()=>auth.signOut()}>
                     SIGN OUT
-                 </div>
+                 </div>)
                  :
-                 <Link className='option' to='/signin'>
+                 (<Link className='option' to='/signin'>
                     SIGN IN
-                 </Link>
+                 </Link>)
             }
        </div>
     </div>
-)
+);
 
 const mapStateToProps = state =>({
    currentUser: state.user.currentUser
-})
+});
 
 export default connect(mapStateToProps)(Header);
